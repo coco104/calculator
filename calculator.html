@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>calculator</title>
+    <style type="text/css">
+        #screen {
+            width:330px;
+            height:100px;
+            background-color:lightblue;
+            margin-top:50px;
+            margin-right: auto;
+            margin-left: auto;
+            margin-bottom: 10px;
+            border-radius:10px;
+        }
+        #text1 {
+            width:327px;
+            height:45px;
+            background-color:#CCC;
+            text-align:right;
+            font-size:20px;
+            border-radius:10px;
+        }
+        #text2 {
+            width:327px;
+            height:50px;
+            background-color:#CCC;
+            text-align:right;
+            font-size:20px;
+            border-radius:10px;
+        }
+
+        #del,#chu,#mul,#n8,#n9,#n7,#n4,#n5,#n6,#jian,#n1,#n2,#n3,#add,#dian,#deng {
+            background-color:#ffdcde;
+            width:80px;
+            height:60px;
+            font-size:18px;
+            border-radius:10px;
+        }
+        #ac {
+            background-color: #ffdcde;
+            width:163px;
+            height:60px;
+            font-size:18px;
+            border-radius:10px;
+        }
+        #n0 {
+            background-color: #ffdcde;
+            width: 163px;
+            height: 60px;
+            float: left;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+        table {
+            margin-top: auto;
+            margin-right: auto;
+            margin-left: auto;
+            margin-bottom: auto;
+        }
+    </style>
+    <script type="text/javascript">
+        var str="";
+        function get(t)   //得到数
+        {
+            str+=document.getElementById(t).value;
+            document.getElementById("text2").value=str;
+
+        }
+        function result()   //计算结果
+        {
+                document.getElementById("text2").value=eval(str);
+                document.getElementById("text1").value=str+"=";
+                str="";
+        }
+        function cle()   //清零AC
+        {
+            document.getElementById("text2").value=null;
+            document.getElementById("text1").value=null;
+            str="";
+        }
+        function del()    //删除前一位
+        {
+            for(var i=0;i<str.length;i++)
+            {
+                document.getElementById("text2").value=str.substring(0,str.length-1)
+            }
+            str=document.getElementById("text2").value;
+        }
+
+    </script>
+</head>
+<body>
+    <div id="screen"><input type="text" id="text1"/><input type="text" id="text2"/></div>
+    <table>
+    <tr>
+        <td colspan="2">
+        <input type="button" value="AC" id="ac" onclick="cle()"/></td>
+        <td><input type="button" value="C" id="del" onclick="del()"/></td>
+        <td><input type="button" value="/" id="chu" onclick="get('chu')"/></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="7" id="n7" onclick="get('n7')"/></td>
+        <td><input type="button" value="8" id="n8" onclick="get('n8')"/></td>
+        <td><input type="button" value="9" id="n9" onclick="get('n9')"/></td>
+        <td><input type="button" value="*" id="mul" onclick="get('mul')"/></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="4" id="n4" onclick="get('n4')"/></td>
+        <td><input type="button" value="5" id="n5" onclick="get('n5')"/></td>
+        <td><input type="button" value="6" id="n6" onclick="get('n6')"/></td>
+        <td><input type="button" value="-" id="jian" onclick="get('jian')"/></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="1" id="n1" onclick="get('n1')"/></td>
+        <td><input type="button" value="2" id="n2" onclick="get('n2')"/></td>
+        <td><input type="button" value="3" id="n3" onclick="get('n3')"/></td>
+        <td><input type="button" value="+" id="add" onclick="get('add')"/></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+        <input type="button" value="0" id="n0" onclick="get('n0')"/></td>
+        <td><input type="button" value="." id="dian" onclick="get('dian')"/></td>
+        <td><input type="button" value="=" id="deng" onclick="result('deng')"/></td>
+    </tr>
+    </table>
+
+
+</body>
+</html>
